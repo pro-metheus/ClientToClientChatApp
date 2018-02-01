@@ -29,11 +29,15 @@ def server_handler(client):
             client.send(dumps(online))
         elif code == '1': #client wants to send a message
             print('***entered sender***')
-            print('sending {0} to {1}'.format(command[2],command[1]))
+            print('sending')
             text = name+' : '+command[2]
             message = text.encode()
-            reciever = connections[command[1]]
-            reciever.send(message)
+            if name == 'all':
+                for person in connections:
+                    connections[person].send(message)
+            else:
+                reciever = connections[command[1]]
+                reciever.send(message)
             client.send('1'.encode())
             
         

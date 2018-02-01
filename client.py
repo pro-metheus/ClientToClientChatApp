@@ -23,7 +23,8 @@ def client_handler():
                 print('(.)'+person)
             print('\n')
         if code == '1':
-            message = input('enter username//message :')
+            print('use all//message for broadcase')
+            message = input('enter username//message  :')
             uname,message=message.split('//')
             message = dumps([1, uname, message])
             client.send(message)
